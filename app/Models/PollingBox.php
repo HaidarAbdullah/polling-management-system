@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pollingbox extends Model
+class PollingBox extends Model
 {
     protected $table = "pollingboxes";
     protected $fillable=['room_id','body','option1','option2','option3','option4','option5'];

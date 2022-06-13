@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Checkcondition extends Model
+class CheckCondition extends Model
 {
-
+    
     protected $table = "checkconditions";
     protected $fillable=['user_id','room_id','answer'];
     public $timestamps=false;

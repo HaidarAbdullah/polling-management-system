@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Supervisinginvitation extends Model
+class SupervisingInvitation extends Model
 {
     protected $table ="supervisinginvitations";
     protected $fillable=['room_id','creator_id','user_id','confirmation'];

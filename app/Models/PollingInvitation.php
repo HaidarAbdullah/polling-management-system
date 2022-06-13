@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pollinginvitation extends Model
+class PollingInvitation extends Model
 {
     protected $table = "pollinginvitations";
     protected $fillable=['room_id','user_id','availability','confirmation'];
