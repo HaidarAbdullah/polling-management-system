@@ -15,9 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = ['user_name','registeration_email','contact_email', 'password' ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -36,4 +34,40 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+
+  ############################ Begin Relations #######################
+  
+  public function pollingroom(){
+    return $this -> hasMany('App\Models\PollingRoom','creator_id');
+ }
+
+  public function supervision(){
+    return $this -> hasMany('App\Models\Supervision','user_id');
+ }
+
+ public function pollinginvitation(){
+    return $this -> hasMany('App\Models\PollingInvitation','user_id');
+ }
+
+ public function supervisinginvitation(){
+    return $this -> hasMany('App\Models\SupervisingInvitation','user_id');
+ }
+
+ public function checkcondition(){
+    return $this -> hasMany('App\Models\CheckCondition','user_id');
+ }
+
+
+
+
+
+
+
+   ############################ End Relations #######################
+
+
+
 }
