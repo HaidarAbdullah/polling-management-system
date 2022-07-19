@@ -24,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 try {
                     synchronized (this) {
-                        wait(5000);
+                        wait(4000);
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -39,6 +39,6 @@ public class SplashActivity extends AppCompatActivity {
 
         tv = findViewById(R.id.tv);
         tv.setVisibility(1);
-        tv.animate().translationY(100).setDuration(3000).setStartDelay(2000);
+        tv.animate().translationY(200).setDuration(3000).setStartDelay(2000);
     }
 }
