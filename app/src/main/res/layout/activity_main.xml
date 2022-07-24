@@ -100,6 +100,8 @@
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    #use backgroundTint to change button color
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -109,22 +111,22 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.569" />
+        app:layout_constraintVertical_bias="0.601" />
 
-      <Button
-        android:layout_width="196dp"
-        android:layout_height="50dp"
-        android:background="#34A106"
+    <Button
+        android:layout_width="192dp"
+        android:layout_height="59dp"
+        android:backgroundTint="#03B50A"
         android:text="Send Register Request"
-        android:textSize="15dp"
         android:textColor="@color/white"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.925"
+        app:layout_constraintHorizontal_bias="0.926"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.647" />
+        app:layout_constraintVertical_bias="0.669" />
 </androidx.constraintlayout.widget.ConstraintLayout>
