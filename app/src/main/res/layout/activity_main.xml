@@ -110,6 +110,7 @@
         android:layout_height="50dp"
         android:backgroundTint="#03B50A"
         android:text="Login"
+        android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
