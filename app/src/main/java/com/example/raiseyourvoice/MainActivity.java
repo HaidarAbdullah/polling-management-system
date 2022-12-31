@@ -7,9 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import com.google.android.material.textfield.TextInputEditText;
+
+import com.example.raiseyourvoice.Api.Api;
+import com.example.raiseyourvoice.model.LoginRequest;
+import com.example.raiseyourvoice.model.LoginResult;
 import com.google.android.material.textfield.TextInputLayout;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -19,18 +25,12 @@ public class MainActivity extends AppCompatActivity {
     TextInputLayout ilpassword;
     Button btn1;
     Button btn2;
+    public static final String EXTRA_TEXT = "com.example.raiseyourvoice.EXTRA_TEXT";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //use retrofit
-        Retrofit retrofit =new Retrofit.Builder()
-                .baseUrl("http://localhost:8000/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-        //use retrofit
         ilemail=findViewById(R.id.email_input_layout);
         ilpassword=findViewById(R.id.password_input_layout);
         btn1=findViewById(R.id.btn1);
@@ -39,11 +39,42 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = ilemail.getEditText().getText().toString();
-                String password = ilpassword.getEditText().getText().toString();
-                Toast.makeText(MainActivity.this,email+" "+password,Toast.LENGTH_LONG).show();
+
+                if (ilemail.getEditText().getText().toString().length() > 9 && ilpassword.getEditText().getText().toString().length() > 3) {
+                    String email = ilemail.getEditText().getText().toString();
+                    String password = ilpassword.getEditText().getText().toString();
+
+                    //networking
+                    Retrofit retrofit = RetrofitClientInstance.getRetrofitInstance();
+
+                    LoginRequest loginRequest = new LoginRequest(email, password);
+                    Api api = retrofit.create(Api.class);
+                    Call<LoginResult> call = api.login(loginRequest);
+
+                    call.enqueue(new Callback<LoginResult>() {
+                        @Override
+                        public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+                            Toast.makeText(MainActivity.this, response.body().getSuccess() + "    " + response.body().getMessage(), Toast.LENGTH_LONG).show();
+                            if (response.body().getSuccess() == true) {
+                               // String token = response.body().getToken();
+                                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                               // intent.putExtra(EXTRA_TEXT,token);
+                                startActivity(intent);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<LoginResult> call, Throwable t) {
+                            Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this, "Please Enter Correct Values", Toast.LENGTH_LONG).show();
+                }
             }
-        });
+            });
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,5 +83,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
+
+
+
+}
 }
