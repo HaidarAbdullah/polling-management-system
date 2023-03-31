@@ -13,7 +13,39 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RaiseYourVoice">
+        android:theme="@style/Theme.RaiseYourVoice"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".SetSupervisorsActivity"
+            android:exported="false"
+            android:parentActivityName=".HomeActivity"/>
+        <activity
+            android:name=".LogoutActivity"
+            android:exported="false"
+            android:parentActivityName=".HomeActivity"/>
+        <activity
+            android:name=".ShowSupervisedRoomsActivity"
+            android:exported="false"
+            android:parentActivityName=".HomeActivity"/>
+        <activity
+            android:name=".ShowSupervisingInvitationsActivity"
+            android:exported="false"
+            android:parentActivityName=".HomeActivity"/>
+        <activity
+            android:name=".CreatePollingRoomActivity"
+            android:exported="false"
+            android:parentActivityName=".HomeActivity"/>
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".RequestConfirmationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SubmitRequestActivity"
+            android:exported="false"
+            android:parentActivityName=".CheckoutActivity" />
         <activity
             android:name=".CheckoutActivity"
             android:exported="false" />
